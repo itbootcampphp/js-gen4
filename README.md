@@ -1,0 +1,1 @@
+Hello, this is a code from JS course Nis at ITBootcamp!
