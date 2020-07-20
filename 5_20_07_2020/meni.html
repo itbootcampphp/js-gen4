@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #gornji {
+            position: fixed;
+            top: 200px;
+            width: 100%;
+        }
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        #gornji ul {
+            overflow: hidden;
+            list-style-type: none;
+            padding: 0;
+            background-color: brown;
+        }
+        #gornji ul li { 
+            float: left;
+            width: 25%;
+            text-align: center;
+        }
+        #gornji ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            display: block;
+        }
+        #gornji ul li a:hover {
+            background-color: chocolate;
+        }
+        .submenu {
+            position: absolute;
+            background-color: coral;
+            width: 25%;
+            display: none;
+        }
+        .dropdown:hover .submenu {
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <nav id="gornji">
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">Our Mission</a></li>
+            <li class="dropdown">
+                <a href="#">Our Customers</a>
+                <div class="submenu">
+                    <a href="#">Pera Peric</a>
+                    <a href="#">Mika Mikic</a>
+                    <a href="#">Laza Lazic</a>
+                </div>
+            </li>
+            <li>
+                <a href="#">Our Ingredients</a>
+            </li>
+        </ul>
+    </nav>
+</body>
+</html>
