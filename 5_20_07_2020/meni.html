@@ -5,14 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
     <style>
+        /* Globalna podesavanja */
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        /* Podesavanja za horizontalni meni sa padajucim podmenijem */
         #gornji {
             position: fixed;
             top: 200px;
             width: 100%;
-        }
-        * {
-            margin: 0;
-            padding: 0;
         }
         #gornji ul {
             overflow: hidden;
@@ -43,6 +46,32 @@
         .dropdown:hover .submenu {
             display: block;
         }
+
+        /* Podesavanja za vertikalni meni */
+        footer {
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+       footer ul {
+            overflow: hidden;
+            list-style-type: none;
+            padding: 0;
+            background-color: blueviolet;
+            width: 25%;        
+        }
+        footer ul li {
+            text-align: center;
+        }
+        footer ul li a {
+            color: white;
+            text-decoration: none;
+            padding: 14px;
+            display: block;
+        }
+        footer ul li a:hover {
+            background-color: cadetblue;
+        }
     </style>
 </head>
 <body>
@@ -63,5 +92,16 @@
             </li>
         </ul>
     </nav>
+
+    <footer>
+        <nav>
+            <ul>
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Our Mission</a></li>
+                <li><a href="#">Our Customers</a></li>
+                <li><a href="#">Our Ingredients</a></li>
+            </ul>
+        </nav>
+    </footer>
 </body>
 </html>
