@@ -195,3 +195,113 @@ if(sati >= 9){
 } else {
     console.log("Van radnog vremena");
 }
+
+// 13. Zadatak
+/*
+2 / 2 = 1 + ost 0
+4 / 2 = 2 + ost 0
+6 / 2 = 3 + ost 0
+...
+
+3 / 2 = 1 + ost 1
+5 / 2 = 2 + ost 1
+7 / 2 = 3 + ost 1
+...
+*/ 
+
+let broj = 16;
+if(broj%2 == 0){
+    //Broj je paran
+    console.log("Broj je paran");
+} else {
+    //Broj je neparan
+    console.log("Broj je neparan");
+}
+
+// 18. 
+//1. nacin
+
+let testBroj = 19.3;
+console.log(testBroj, Math.trunc(testBroj));
+if(testBroj == Math.trunc(testBroj)){
+    console.log("Ceo broj");
+} else {
+    console.log("Decimalni broj");
+}
+//2. nacin sa mod 1
+//3. nacin da se pita da li je integer
+//4. nacin sa Math.floor
+
+// 21. 
+let broj1 = 23;
+let broj2 = 23;
+let broj3 = 23;
+
+if(broj1>=broj2 && broj1>=broj3){ 
+    console.log("Broj 1  je najveći");
+} else if(broj2>=broj1 && broj2>=broj3){
+    console.log("Broj 2  je najveći");
+} else {
+    console.log("Broj 3 je najveći");
+}
+
+//Primer
+if(broj1 == broj2 && broj2 == broj3){
+    console.log("Sva tri broja su ista");
+} else if(broj1 == broj2){
+    console.log("Broj 1 i broj 2 su isti");
+} else if(broj2 == broj3){
+    console.log("Broj 2 i broj 3 su isti");
+} else if(broj1 == broj3){
+    console.log("Broj 1 i broj 3 su isti");
+} else {
+    console.log("Brojevi 1, 2 i 3 su različiti");
+}
+
+//23.
+let god = 2000;
+//god = 2000 (DA && NE) || DA = NE || DA = DA
+//god = 2010 (NE && DA) || NE = NE || NE = NE
+if( (god%4==0 && god%100!=0) || god%400==0 ){ 
+    console.log("Prestupna godina");
+} else {
+    console.log("Prosta godina");
+}
+
+if(9 != "9"){
+    console.log("Različiti su");
+} else {
+    console.log("Isti su");
+}
+
+if(9 !== "9"){
+    console.log("Različiti su");
+} else {
+    console.log("Isti su");
+}
+
+//Zadata vrednost u minutima, prevesti je u sate i minute
+let minuti = 129;
+sati = Math.trunc(minuti/60);
+let minn = minuti%60;
+console.log(`${sati} : ${minn}`);
+
+//25.
+let dan = 0;
+let sat = 17;
+let min = 58;
+if(dan==0 || dan==6){
+    //Vikend od 10 do 18
+    if(sat>=10 && sat<18){
+        console.log("VIKEND OTVORENO");
+    } else {
+        console.log("VIKEND ZATVORENO");
+    }
+} else {
+    //Radni dan od 9 do 20
+    if(sat>=9 && sat<20){
+        console.log("RADNI DAN OTVORENO");
+    } else {
+        console.log("RADNI DAN ZATVORENO");
+    }
+}
