@@ -57,3 +57,45 @@ while(i <= m) {
     i++;
 }
 console.log(suma);
+
+
+/* Odrediti sa koliko brojeva je deljiv uneti broj k. */
+let k = 12;
+i = 1;
+let broj = 0;
+while(i <= k) {
+    if(k % i == 0) {
+        broj++;
+    }
+    i++;
+}
+console.log(`Broj delioca broja ${k} je: ${broj}`);
+
+
+/* Odrediti da li je broj n prost ili slozen. */
+n = 13;
+i = 2;
+broj = 0;
+let prost = true;
+while(i <= Math.floor(Math.sqrt(n))) {
+    if(n % i == 0) {
+        prost = false;
+    }
+    i++;
+}
+if(prost == true) {
+    console.log(`Broj ${n} je prost.`);
+}
+else {
+    console.log(`Broj ${n} je slozen.`);
+}
+
+// let - oblast vazenja je unutar bloka
+// var - oblast vazenja je unutar funkcije
+let x = 5;
+if(x < 10) {
+    var y = 4;
+    y = y + 1;
+    console.log(y);
+}
+console.log(x, y); // 5, 5
