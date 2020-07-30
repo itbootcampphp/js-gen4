@@ -99,3 +99,48 @@ if(x < 10) {
     console.log(y);
 }
 console.log(x, y); // 5, 5
+
+
+// n-ti clan Fibonacijevog niza
+n = 6;
+let fi1 = 1;
+let fi2 = 1;
+let fi = 1;
+i = 3;
+while(i <= n) {
+    fi = fi1 + fi2;
+    fi1 = fi2;
+    fi2 = fi;
+    i++;
+    console.log(fi);
+}
+console.log(`${n}-ti clan Fibonacijevog niza = ${fi}`);
+/*
+n = 6
+
+              i    fi1    fi2    fi
+------------------------------------
+Pre ulaska:   3     1      1     1
+Prvi put  :   4     1      2     2
+Drugi put :   5     2      3     3
+Treci put :   6     3      5     5
+Cetvrti put:  7     5      8     8 
+*/
+
+/* Kreirati n paragrafa sa proizvoljnim tekstom, i naizmenično ih obojiti sa tri različite boje.*/
+n = 16;
+let div = document.getElementById('parent');
+let tekst = "Bla bla bla bla";
+i = 1;
+while(i <= n) {
+    if(i % 3 == 1) { // Paragrafi: 1, 4, 7, 10, ....
+        div.innerHTML += `<p style='color: blue'>${tekst}</p>`;
+    }
+    else if(i % 3 == 2) { // Paragrafi: 2, 5, 8, 11, ...
+        div.innerHTML += `<p style='color: red'>${tekst}</p>`;
+    }
+    else { // Paragrafi: 3, 6, 9, 12, ...
+        div.innerHTML += `<p style='color: yellow'>${tekst}</p>`;
+    }
+    i++;
+}
