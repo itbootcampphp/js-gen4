@@ -106,3 +106,40 @@ console.log(paragrafi[1].parentNode);
 console.log(document.querySelector("a:nth-child(2)").parentNode.parentNode);
 console.log(paragrafi[1].parentNode.childNodes[3]);
 console.log(paragrafi[1].parentNode.childNodes); // NodeList
+
+// Kreiranje novog cvora u DOM stablu
+let noviParagraf = document.createElement('p');
+noviParagraf.innerHTML = "Tekst novog paragrafa";
+noviParagraf.style.color = "blue";
+
+// Dodavanje novog cvora kao dete nekog postojeceg elementa
+document.body.appendChild(noviParagraf);
+
+// document.body.innerHTML += "<p style='color: blue'>Tekst novog paragrafa</p>";
+
+// Brisanje cvora iz DOM stabla
+// document.body.removeChild(noviParagraf);
+
+// Zamena cvora u DOM stablu
+let noviLink = document.createElement('a');
+noviLink.innerHTML = "Klikni";
+noviLink.href = "https://www.google.com";
+
+document.body.replaceChild(noviLink, noviParagraf);
+
+// Dodavanje klase elementu
+noviLink.classList.add('link');
+
+let div = document.getElementsByClassName('links')[0];
+let noviNoviLink = document.createElement('a');
+noviNoviLink.innerHTML = "Klikni i ovde";
+noviNoviLink.href = "#";
+div.appendChild(noviNoviLink);
+
+
+let p1 = document.getElementById('p1');
+console.log(p1.innerHTML);
+console.log(p1.textContent);
+
+console.log(p1.innerHTML.includes('error'));
+console.log(p1.textContent.includes('error'));
