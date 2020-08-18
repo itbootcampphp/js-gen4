@@ -74,3 +74,51 @@ buttonPlus.addEventListener("click", () => {
     res++;
     spanResult.innerHTML = res;
 });
+
+/////////////////////
+
+/*
+5. 
+Napraviti input polje i dugme. U input polje treba da se unese ime neke osobe, a na ekranu u paragrafu da se ispiše Zdravo i ime osobe preuzeto iz input polja.
+*/
+
+// DOM
+let inputName = document.getElementById("name");
+let buttonSubmitName = document.getElementById("submitName");
+let pPrintName = document.getElementById("printName");
+
+buttonSubmitName.addEventListener("click", () => {
+    let name = inputName.value;
+    pPrintName.innerHTML = "Hello " + name + " !";
+    inputName.value = ""; //Isprazni input polje
+});
+
+/*
+7. 
+Napraviti sledeću formu i rezultat računanja ispisati u paragrafu ispod nje
+*/
+
+//DOM
+let inputNum1 = document.getElementById('num1');
+let buttonKvadriraj = document.getElementById('kvadriraj');
+let pRes = document.getElementById('res');
+
+//1. Način
+// buttonKvadriraj.addEventListener('click', event => {
+//     event.preventDefault();
+//     let num1 = inputNum1.value;
+//     let res = num1**2;
+//     //console.log(res);
+//     pRes.innerHTML = res;
+// });
+
+//2. Način
+let form = document.querySelector("form");
+form.addEventListener('submit', event => {
+    event.preventDefault();
+    let res = inputNum1.value ** 2;
+    pRes.innerHTML = res;
+});
+
+
+
