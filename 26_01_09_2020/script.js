@@ -82,25 +82,49 @@ req.send();
 
 let getKorisnici = callback => {
     let req = new XMLHttpRequest();
-    req.addEventListener('readystatechange', () => {
-        if(req.readyState === 4 && req.status === 200) { // ako je sve u redu
-            let data = JSON.parse(req.responseText); // data - niz objekata
-            callback(data);
+    req.addEventListener('readystatechange', function() {
+        if(this.readyState === 4 && this.status === 200) { // ako je sve u redu
+            let data = JSON.parse(this.responseText); // data - niz objekata
+            callback(undefined, data);
         }
-        else if(req.readyState === 4) {
-            console.log('Server nije u stanju da obradi zahtev');
+        else if(this.readyState === 4) {
+            callback('Server nije u mogucnosti da obradi zahtev', undefined);
         }
     });
     req.open('GET', 'https://jsonplaceholder.typicode.com/users');
     req.send();
-};
+}
 
-// Poziv f-je:
-
-getKorisnici(data => {
-    data.forEach(user => {
-        if(user.website.includes('.com')) {
-            console.log(user.name);
-        }
-    });
+// Zadatak 2
+getKorisnici( (error, data) => {
+    if(error) {
+        console.log(error);
+    }
+    else { 
+        data.forEach(user => { // prolazak kroz sve objekte (korisnik)
+            if(user.website.includes('.com')) { // da li string sadrzi rec '.com'
+                console.log(user.name);
+            }
+        });
+    }
 });
+
+// Zadatak 3
+function usersNameClementin(error, users) {
+    if(error) {
+        const div = document.getElementById('error');
+        div.innerHTML = error;
+    }
+    else {
+        users.forEach(user => {
+            if(user.name.includes('Clementin')) {
+                console.log(user.name);
+            }
+        });
+    }
+}
+
+getKorisnici( usersNameClementin );
+
+// Zadatak 4
+//getKorisnici( /* funkcija koja odredjuje korisnike cije ime kompanije sadrzi 'Group' ili 'LLC' */ );
