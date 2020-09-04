@@ -128,3 +128,36 @@ getKorisnici( usersNameClementin );
 
 // Zadatak 4
 //getKorisnici( /* funkcija koja odredjuje korisnike cije ime kompanije sadrzi 'Group' ili 'LLC' */ );
+
+
+
+// Povezivanje na lokalni server ka fajlu sportisti.json
+
+let getSportisti = callback => {
+    const request = new XMLHttpRequest();
+
+    request.addEventListener('readystatechange', function() {
+        if(this.readyState === 4 && this.status === 200) {
+            const data = JSON.parse(this.responseText);
+            callback(undefined, data);
+        }
+        else if(this.readyState === 4) {
+            callback('Server nije u mogucnosti da obradi zahtev', undefined);
+        }
+    });
+
+    request.open('GET', 'http://localhost:3000/sportisti/');
+    request.send();
+};
+
+// Prikaz svih sportista
+getSportisti((err, data) => {
+    if(err) {
+        console.log(err);
+    }
+    else {
+        data.forEach(sportista => {
+            console.log(sportista.imePrezime, sportista.visina);
+        });
+    }
+});
