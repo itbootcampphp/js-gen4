@@ -11,7 +11,7 @@ class Automobil {
 
     // U klasama NEMA arrow f-ja
     sviraj(){
-        console.log("Beep!");
+        console.log("Beep! Beep!");
     }
 }
 
