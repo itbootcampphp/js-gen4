@@ -5,6 +5,7 @@ class Chatroom{
         this.room = r;
         this.username = u;
         this.chats = db.collection('chats');
+        this.unsub;
     }
 
     // Seteri
@@ -21,6 +22,20 @@ class Chatroom{
     }
     get room(){
         return this._room;
+    }
+
+    // Update polja
+    updateUsername(uu){
+        //Suštinski menja samo vrednost lokalne promenljive, ne menja vrednost username u bazi podataka
+        this.username = uu;
+    }
+
+    updateRoom(ur){
+        this.room = ur;
+        console.log("Updated room");
+        if(this.unsub){
+            this.unsub();
+        }
     }
 
     //Dodavanje nove poruke
@@ -42,9 +57,9 @@ class Chatroom{
         return response; // Vraćam Promise
     }
 
-    //
+    // Dokumenti koji su dodati bazi
     getChats(callback){
-        this.chats
+        this.unsub = this.chats
         .where('room', '==', this.room)
         .orderBy('created_at')
         .onSnapshot( snapshot => {
@@ -56,6 +71,7 @@ class Chatroom{
             });
         });
     }
+
 }
 //Nova instanca klase (Novi objekat)
 let chatroom1 = new Chatroom('js', 'SS');
@@ -70,9 +86,15 @@ console.log(chatroom2.username, chatroom2.room);
 
 let chatroom3 = new Chatroom('tests', 'JM');
 console.log(chatroom3.username, chatroom3.room);
+//chatroom3.addChat('Test test test');
 
 let chatroom4 = new Chatroom('tests', 'SS');
 console.log(chatroom4.username, chatroom4.room);
 
+//chatroom4.getChats(data => {console.log(data);});
+chatroom4.updateRoom('js');
+console.log(chatroom4.username, chatroom4.room);
+chatroom4.getChats(data => {console.log(data);});
+
 // Ispis četova u konzoli
-chatroom1.getChats(data => {console.log(data);});
+//chatroom1.getChats(data => {console.log(data);});
