@@ -39,17 +39,32 @@ class Chatroom{
 
         //Da sačuvamo dokument u bazi
         let response = await this.chats.add(docChat); 
-        return response;
+        return response; // Vraćam Promise
+    }
+
+    //
+    getChats(callback){
+        this.chats
+        .where('room', '==', this.room)
+        .orderBy('created_at')
+        .onSnapshot( snapshot => {
+            snapshot.docChanges().forEach( change => {
+                if(change.type == 'added'){
+                    //update četa (dodaj novu poruku na ekran) 
+                    callback(change.doc.data());
+                }
+            });
+        });
     }
 }
 //Nova instanca klase (Novi objekat)
 let chatroom1 = new Chatroom('js', 'SS');
 console.log(chatroom1.username, chatroom1.room);
-//chatroom1.addChat('Zravo svima!')
+//chatroom1.addChat('Zravo svima! Kako ste?');
 
 let chatroom2 = new Chatroom('general', 'MĐ');
 console.log(chatroom2.username, chatroom2.room);
-// chatroom2.addChat('HR trening!')
+// chatroom2.addChat('HR trening počinje!')
 //     .then( () => {console.log('Uspešno dodat čet!');})
 //     .catch( err => {console.log(err);});
 
@@ -58,3 +73,6 @@ console.log(chatroom3.username, chatroom3.room);
 
 let chatroom4 = new Chatroom('tests', 'SS');
 console.log(chatroom4.username, chatroom4.room);
+
+// Ispis četova u konzoli
+chatroom1.getChats(data => {console.log(data);});
