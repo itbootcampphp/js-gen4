@@ -1,11 +1,11 @@
-class Chatroom{
+export class Chatroom{
 
     // Konstruktor
     constructor(r, u){
         this.room = r;
         this.username = u;
         this.chats = db.collection('chats');
-        this.unsub;
+        this.unsub; //undefined na početku tj. kada se kreira objekat
     }
 
     // Seteri
@@ -28,11 +28,11 @@ class Chatroom{
     updateUsername(uu){
         //Suštinski menja samo vrednost lokalne promenljive, ne menja vrednost username u bazi podataka
         this.username = uu;
+        localStorage.setItem('usernameLS', uu);
     }
 
     updateRoom(ur){
         this.room = ur;
-        console.log("Updated room");
         if(this.unsub){
             this.unsub();
         }
@@ -73,28 +73,3 @@ class Chatroom{
     }
 
 }
-//Nova instanca klase (Novi objekat)
-let chatroom1 = new Chatroom('js', 'SS');
-console.log(chatroom1.username, chatroom1.room);
-//chatroom1.addChat('Zravo svima! Kako ste?');
-
-let chatroom2 = new Chatroom('general', 'MĐ');
-console.log(chatroom2.username, chatroom2.room);
-// chatroom2.addChat('HR trening počinje!')
-//     .then( () => {console.log('Uspešno dodat čet!');})
-//     .catch( err => {console.log(err);});
-
-let chatroom3 = new Chatroom('tests', 'JM');
-console.log(chatroom3.username, chatroom3.room);
-//chatroom3.addChat('Test test test');
-
-let chatroom4 = new Chatroom('tests', 'SS');
-console.log(chatroom4.username, chatroom4.room);
-
-//chatroom4.getChats(data => {console.log(data);});
-chatroom4.updateRoom('js');
-console.log(chatroom4.username, chatroom4.room);
-chatroom4.getChats(data => {console.log(data);});
-
-// Ispis četova u konzoli
-//chatroom1.getChats(data => {console.log(data);});
