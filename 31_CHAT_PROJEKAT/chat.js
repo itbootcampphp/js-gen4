@@ -33,6 +33,7 @@ export class Chatroom{
 
     updateRoom(ur){
         this.room = ur;
+        localStorage.setItem('roomLS', ur);
         if(this.unsub){
             this.unsub();
         }

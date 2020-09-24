@@ -13,6 +13,10 @@ export class ChatUI{
         return this._list;
     }
 
+    clear(){
+        this.list.innerHTML = ``;
+    }
+
     formatDate(date){        
         let d = date.getDate();
         let m = date.getMonth() + 1;
